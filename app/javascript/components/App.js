@@ -1,11 +1,22 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-const app = () => {
+import Post from "./Post";
+import Posts from "./Posts";
+import AddPost from "./AddPost";
+import EditPost from "./EditPost";
+import Home from "./Home";
+
+const App = () => {
   return(
-    <div>
-
-    </div>
+    <Router>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/post" component={Post} />
+      <Route exact path="/posts" component={Posts} />
+      <Route exact path="/posts/new" component={AddPost} />
+      <Route exact path="/posts/:id/edit" component={EditPost} />
+    </Router>
   )
 }
 
-export default app;
+export default App;
