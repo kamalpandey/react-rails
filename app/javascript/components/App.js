@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Post from "./Post";
 import Posts from "./Posts";
@@ -10,11 +10,13 @@ import Home from "./Home";
 const App = () => {
   return(
     <Router>
+      <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/post" component={Post} />
       <Route exact path="/posts" component={Posts} />
       <Route exact path="/posts/new" component={AddPost} />
+      <Route exact path="/posts/:id" component={Post} />
       <Route exact path="/posts/:id/edit" component={EditPost} />
+      </Switch>
     </Router>
   )
 }
