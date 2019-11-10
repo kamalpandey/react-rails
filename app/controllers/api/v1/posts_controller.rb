@@ -1,7 +1,7 @@
-module Api
+module API
   module V1
     class PostsController < ApplicationController
-      before_filter :find_post, only: [:show, :update]
+      before_action :find_post, only: [:show, :update, :destroy]
 
       def index
         @posts = Post.all
@@ -27,6 +27,11 @@ module Api
         else
           render json: @post.errors, status: :unprocessable_entity
         end
+      end
+
+      def destroy
+        @post.destroy
+        head :no_content
       end
 
 
